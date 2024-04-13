@@ -3,31 +3,46 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/styles.css" />
         <title>Bible Verse AI Generator</title>
         <link rel="stylesheets" href="src/styles.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
     </head>
     <body>
-        <header>Bible Verse AI Generator</header>
+        <div id="wrapper">
+            <img
+                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/122/851/original/bible_logo.jpg?1712900507"
+                title="Bible Logo"
+                class="bible-logo img-fluid center-block"
+            />
+            <h4 class="site-name">Bible Verse Generator</h4>
+        </div>
         <main>
-            <form>
-                <input
-                    type="text"
-                    placeholder="Type a keyword for the bible verse"
-                    class="userInput"
-                    autocomplete="off"
-                    autofocus
-                    required
-                />
-                <input type="submit" />
-            </form>
-            <div>
-                <h1>Bible: The word of the Lord</h1>
-                <!-- <img
-                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/122/739/original/humble-lamb-ednHN0P5qz0-unsplash.jpg?1712816336"
+            <div class="container">
+                <img
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/122/992/original/cross_img.jpg?1712988063"
                     title="Bible Image"
-                    class="bibleImage"
-                    image
-                /> -->
+                    class="card-img "
+                />
+                <div>
+                    <h2 ">Bible: The word of the Lord</h2>
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="Type a keyword for the bible verse"
+                            class="user-Input"
+                            autocomplete="off"
+                            autofocus
+                            required
+                        />
+                        <input type="submit" class="btn btn-primary" />
+                    </form>
+                </div>
             </div>
             <h4>Today's verse</h4>
             <p>

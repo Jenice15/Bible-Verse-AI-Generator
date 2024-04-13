@@ -1,4 +1,29 @@
-h1 {
-    background-color: red;
-    color: pink;
+body {
+    background-color: #282828;
+    color: #ffd700;
+}
+
+.bible-logo {
+    width: 90px;
+    border-radius: 50%;
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+#wrapper .bible-logo {
+    position: relative;
+    bottom: 30px;
+    /* visibility: hidden; */
+}
+.site-name {
+    position: relative;
+    bottom: 20px;
+    left: 115px;
+}
+.card-title {
+    color: black !important;
+}
+.card-img {
+    height: 300px !important;
+    width: 1200px !important;
 }
