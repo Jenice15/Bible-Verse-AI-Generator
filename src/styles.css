@@ -1,29 +1,94 @@
 body {
     background-color: #282828;
-    color: #ffd700;
+    color: aliceblue !important;
 }
 
 .bible-logo {
-    width: 90px;
+    width: 70px;
+    height: 60px;
     border-radius: 50%;
     position: relative;
-    left: 20px;
-    top: 20px;
+    left: 0px;
+    top: -10px;
 }
 #wrapper .bible-logo {
     position: relative;
     bottom: 30px;
     /* visibility: hidden; */
 }
-.site-name {
+.navbar {
+    background-color: #fd5b98;
+    height: 70px;
+}
+.navbar-brand {
     position: relative;
-    bottom: 20px;
-    left: 115px;
+    left: 20px;
+    color: aliceblue !important;
 }
-.card-title {
-    color: black !important;
+.todays-verse-btn {
+    background-color: aliceblue;
+    color: #e87da6;
+    border-radius: 12px;
+    font-size: 18px;
+    padding: 4px;
+    border: 1px solid transparent;
+    position: relative;
+    right: 30px;
+    top: -8px;
 }
-.card-img {
-    height: 300px !important;
+/* .bible-img {
+    background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/054/original/pexels-tima-miroshnichenko-5199805_brown_bible.jpg?1713067217');
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 1200px !important;
+} */
+.main {
+    text-align: center;
+    background-image: linear-gradient(
+            rgba(81, 35, 61, 0.6),
+            rgba(95, 50, 77, 0.6)
+        ),
+        url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/055/original/pexels-ella-wei-8268315rosebible.jpg?1713072865');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 480px;
+    width: 1550px;
+    top: 2px;
+    /* filter: blur(5px); */
+}
+.main-content-h2 {
+    position: relative;
+    top: 170px;
+}
+.main-content-input {
+    position: relative;
+    top: 200px;
+    border-radius: 12px;
+    height: 40px;
+    background-color: #f4afca;
+    border: 1px solid transparent;
+}
+.search-btn {
+    color: aliceblue;
+    background-color: #fd5b98;
+    position: relative;
+    top: 200px;
+    border-radius: 12px;
+    font-size: 18px;
+    padding: 4px;
+    border: 1px solid transparent;
+}
+.todays-verse {
+    background-color: #f4afca;
+    text-align: center;
+    font-size: 30px;
+}
+.footer {
+    display: block;
+    text-align: center;
+    color: #fd5b98;
+    text-decoration: none;
+}
+a {
+    text-decoration: none !important;
 }

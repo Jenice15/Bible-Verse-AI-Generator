@@ -12,45 +12,72 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous"
         />
+        <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     </head>
     <body>
-        <div id="wrapper">
-            <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/122/851/original/bible_logo.jpg?1712900507"
-                title="Bible Logo"
-                class="bible-logo img-fluid center-block"
-            />
-            <h4 class="site-name">Bible Verse Generator</h4>
-        </div>
-        <main>
-            <div class="container">
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand" href="#">
                 <img
-                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/122/992/original/cross_img.jpg?1712988063"
-                    title="Bible Image"
-                    class="card-img "
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/122/851/original/bible_logo.jpg?1712900507"
+                    class="d-inline-block align-top bible-logo"
+                    alt=""
                 />
+                Bible Verse Generator
+            </a>
+            <button class="todays-verse-btn">Today's Verse</button>
+        </nav>
+        <main>
+            <div class="main">
+                <!-- <img
+                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/053/original/pexels-tara-winstead-8383409_BIBLE.jpg?1713064551"
+                    alt="bible image"
+                    class="bible-img"
+                /> -->
+
                 <div>
-                    <h2 ">Bible: The word of the Lord</h2>
+                    <h2 class="main-content-h2">Bible: The word of the Lord</h2>
                     <form>
                         <input
                             type="text"
                             placeholder="Type a keyword for the bible verse"
-                            class="user-Input"
+                            class="user-Input main-content-input"
                             autocomplete="off"
                             autofocus
                             required
                         />
-                        <input type="submit" class="btn btn-primary" />
+                        <button class="search-btn" type="submit">Search</button>
                     </form>
                 </div>
             </div>
+
+            <!-- <div class="main">
+                <div>
+                    <h2 class="main-content-h2">Bible: The word of the Lord</h2>
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="Type a keyword for the bible verse"
+                            class="user-Input main-content-input"
+                            autocomplete="off"
+                            autofocus
+                            required
+                        />
+                        <input
+                            type="SEARCH"
+                            class="btn-input main-content-input"
+                        />
+                    </form>
+                </div>
+            </div> -->
+        </main>
+        <div class="todays-verse">
             <h4>Today's verse</h4>
             <p>
                 <b>Psalm 118:24</b> "This is the day which the Lord hath made;
                 we will rejoice and be glad in it."
             </p>
-        </main>
-        <footer>
+        </div>
+        <footer class="footer">
             This AI generated app was created by
             <a
                 href="https://www.linkedin.com/in/jenice-martin-781a43185/"
@@ -67,7 +94,7 @@
             <a
                 href="https://app.netlify.com/sites/bibleversegenerator/overview"
                 target="_blank"
-                >Netlify</a
+                >Netlify.</a
             >
         </footer>
     </body>
