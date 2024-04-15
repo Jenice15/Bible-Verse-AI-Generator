@@ -52,5 +52,5 @@ inputWord.addEventListener('submit', searchVerse);
 // console.log(buttonElement);
 console.log(inputWord);
 
-let todaysVerseElement = document.querySelector('#todays-verse');
+let todaysVerseElement = document.querySelector('#todays-verse-btn');
 todaysVerseElement.addEventListener('click', generateRandomVerse);
