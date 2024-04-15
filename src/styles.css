@@ -37,13 +37,20 @@ body {
 .todays-verse-btn {
     background-color: var(--tertiary-color);
     color: var(--primary-color);
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 18px;
     padding: 4px;
     border: 1px solid transparent;
     position: relative;
     right: 30px;
     top: -8px;
+}
+.todays-verse-btn:hover {
+    background-color: rgb(192, 17, 134);
+    color: var(--tertiary-color);
+    border: 1px solid rgb(192, 17, 134);
+    font-weight: 500;
+    font-size: 20px;
 }
 /* .bible-img {
     background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/054/original/pexels-tima-miroshnichenko-5199805_brown_bible.jpg?1713067217');
@@ -53,45 +60,48 @@ body {
 } */
 .main {
     text-align: center;
-    background-image: linear-gradient(
-            rgba(81, 35, 61, 0.6),
-            rgba(95, 50, 77, 0.6)
-        ),
-        url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/055/original/pexels-ella-wei-8268315rosebible.jpg?1713072865');
+    background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/055/original/pexels-ella-wei-8268315rosebible.jpg?1713072865');
     background-repeat: no-repeat;
     background-size: cover;
     height: 480px;
-    width: 1550px;
+    width: 1536px;
     top: 2px;
     /* filter: blur(5px); */
 }
 .main-content-h2 {
     position: relative;
-    top: 170px;
+    top: 100px;
 }
 .main-content-input {
     position: relative;
-    top: 200px;
+    top: 140px;
     border-radius: 12px;
     height: 40px;
     background-color: var(--secondary-color);
     border: none;
+    outline: none;
 }
 .search-btn {
     color: var(--tertiary-color);
     background-color: var(--primary-color);
     position: relative;
-    top: 200px;
+    top: 140px;
     border-radius: 12px;
     font-size: 18px;
     padding: 4px;
     border: 1px solid transparent;
+}
+.search-result-box {
+    position: relative;
+    top: 180px;
+    font-size: 30px;
 }
 .todays-verse {
     background-color: var(--secondary-color);
     text-align: center;
     font-size: 30px;
 }
+
 .footer {
     display: block;
     text-align: center;

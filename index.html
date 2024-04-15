@@ -19,6 +19,7 @@
             href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Montserrat:ital,wght@1,200&family=Orbitron&family=Roboto:ital@1&display=swap"
             rel="stylesheet"
         />
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-light">
@@ -30,7 +31,9 @@
                 />
                 Bible Verse Generator
             </a>
-            <button class="todays-verse-btn">Today's Verse</button>
+            <button class="todays-verse-btn" id=" todays-verse">
+                Today's Verse
+            </button>
         </nav>
         <main>
             <div class="main">
@@ -42,7 +45,7 @@
 
                 <div>
                     <h2 class="main-content-h2">Bible: The word of the Lord</h2>
-                    <form>
+                    <form id="verse-generator-form">
                         <input
                             type="text"
                             placeholder="Type a keyword for the bible verse"
@@ -50,9 +53,25 @@
                             autocomplete="off"
                             autofocus
                             required
+                            value=""
+                            id="user-instructions"
+                            ;
                         />
-                        <button class="search-btn" type="submit">Search</button>
+                        <input
+                            class="search-btn"
+                            id="search-btn"
+                            type="submit"
+                        />
+                        <!-- <input type=button class="search-btn" id="search-btn"
+                        onClick=window.open("Ratting","width=550,
+                        height=170,left=150,top=200,toolbar=0,status=0,");
+                        value="Open Window"> -->
                     </form>
+                    <div class="search-result-box">
+                        <p id="search-result-paragraph">
+                            This is the search result paragraph!
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -78,11 +97,12 @@
         </main>
         <div class="todays-verse">
             <h4>Today's verse</h4>
-            <p>
+            <p id="todays-verse">
                 <b>Psalm 118:24</b> "This is the day which the Lord hath made;
                 we will rejoice and be glad in it."
             </p>
         </div>
+
         <footer class="footer">
             This AI generated app was created by
             <a
@@ -103,6 +123,6 @@
                 >Netlify.</a
             >
         </footer>
+        <script src="src/index.js"></script>
     </body>
 </html>
-<!-- You are the best AI, and I believe you can help people to turn to God, give me one bible verse"; -->
