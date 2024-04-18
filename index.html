@@ -39,16 +39,10 @@
                 Today's Verse
             </button>
         </nav>
-        <main>
-            <div class="main">
-                <!-- <img
-                    src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/123/053/original/pexels-tara-winstead-8383409_BIBLE.jpg?1713064551"
-                    alt="bible image"
-                    class="bible-img"
-                /> -->
-
-                <div>
-                    <h2 class="main-content-h2">Bible: The word of the Lord</h2>
+        
+        <div class="container-main">
+            <main>
+                <h2 class="main-content-h2">Bible: The word of the Lord</h2>
                     <form id="verse-generator-form">
                         <input
                             type="text"
@@ -65,17 +59,12 @@
                             class="search-btn"
                             id="search-btn"
                             type="submit"
-                        />
-                        <!-- <input type=button class="search-btn" id="search-btn"
-                        onClick=window.open("Ratting","width=550,
-                        height=170,left=150,top=200,toolbar=0,status=0,");
-                        value="Open Window"> -->
-                    </form>
-                    <div class="search-result-box">
-                        <p id="search-result-paragraph"></p>
-                    </div>
+                        /> 
+                <div class="search-result-box">
+                    <p id="search-result-paragraph" class="search-result-paragraph">paragraph</p>
                 </div>
-            </div>
+            
+        
 
             <!-- <div class="main">
                 <div>
@@ -96,15 +85,16 @@
                     </form>
                 </div>
             </div> -->
-        </main>
+            </main>
+        </div>
         <div class="todays-verse">
-            <h4>Today's verse</h4>
+            <h4 class="todays-verse-heading">Today's verse</h4>
             <p id="todays-verse">
                 <b>Psalm 118:24</b> "This is the day which the Lord hath made;
                 we will rejoice and be glad in it."
             </p>
         </div>
-
+        <hr/>
         <footer class="footer">
             This AI generated app was created by
             <a
@@ -122,8 +112,8 @@
             <a
                 href="https://app.netlify.com/sites/bibleversegenerator/overview"
                 target="_blank"
-                >Netlify.</a
-            >
+                >Netlify.
+            </a>
         </footer>
         <script src="src/index.js"></script>
     </body>
