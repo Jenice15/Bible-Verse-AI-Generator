@@ -90,6 +90,7 @@ main {
 
 ::placeholder {
     color: rgb(250, 232, 232);
+    opacity: 0.5;
 }
 .search-btn {
     color: var(--tertiary-color);
