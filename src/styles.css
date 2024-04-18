@@ -173,6 +173,7 @@ a {
         font-size: 70px;
         width: 840px;
         border-radius: 25px !important;
+        height: 140px;
     }
     .search-btn {
         position: relative !important;
@@ -181,6 +182,7 @@ a {
         width: 270px;
         padding: auto;
         border-radius: 25px !important;
+        height: 140px;
     }
     .search-result-paragraph {
         position: relative !important;
