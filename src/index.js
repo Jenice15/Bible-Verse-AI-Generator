@@ -20,7 +20,7 @@ function verseGenerator(response) {
     let searchParagraph = document.querySelector('#search-result-paragraph');
 
     console.log(response.data.answer);
-    searchParagraph.innerHTML = `${response.data.answer}`;
+    searchParagraph.innerHTML = `"${response.data.answer}"`;
 
     new Typewriter(searchParagraph, {
         strings: response.data.answer,
