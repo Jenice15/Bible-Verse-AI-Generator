@@ -3,7 +3,6 @@ function getTodaysVerse(response) {
     todaysVerseParagraph.innerHTML = response.data.answer;
     console.log(response.data.answer);
 }
-
 function generateRandomVerse(event) {
     event.preventDefault();
 
@@ -16,8 +15,17 @@ function generateRandomVerse(event) {
     console.log(apiUrl);
 }
 
+// function handleClick() {
+//     console.log('before search verse');
+//     searchVerse();
+//     console.log('after search verse');
+//     window.location.href();
+//     console.log('after reload');
+// }
+
 function verseGenerator(response) {
     let searchParagraph = document.querySelector('#search-result-paragraph');
+    let searchBtn = document.querySelector('#user-instructions');
     // console.log(response.data.answer);
     // let finalText = response.data.answer;
     // let splicedText = finalText.splice(0, 6);
@@ -31,10 +39,16 @@ function verseGenerator(response) {
         delay: 20,
         cursor: '',
     });
+    let searchBtn = document.querySelector('#user-instructions');
+    searchBtn.disabled = false;
+    searchBtn.value = '';
+    searchBtn.focus();
+    searchBtn.focus();
 }
 
 function searchVerse(event) {
     event.preventDefault();
+    console.log('new');
     let userInstructions = document.querySelector('#user-instructions').value;
     let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
     let prompt = `You are the best AI, and I believe you can help people to turn to God, give me one bible verse with the word ${userInstructions}`;
@@ -43,6 +57,7 @@ function searchVerse(event) {
     let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
     axios.get(apiUrl).then(verseGenerator);
+    // axios.get(apiUrl).then(handleClick);
 
     let searchParagraph = document.querySelector('#search-result-paragraph');
     searchParagraph.innerHTML = 'Generating a bible verse for you...';
@@ -50,6 +65,13 @@ function searchVerse(event) {
 let inputWord = document.querySelector('#verse-generator-form');
 // let buttonElement = document.querySelector('#search-btn');
 inputWord.addEventListener('submit', searchVerse);
+// inputWord.addEventListener('submit', handleClick);
+
+let searchBtn = document.querySelector('#user-instructions');
+// searchBtn.addEventListener('click', handleClick);
+// let searchBtn = document.querySelector('#search-btn');
+// searchBtn.addEventListener('click', handleClick);
 
 let todaysVerseElement = document.querySelector('#todays-verse-btn');
 todaysVerseElement.addEventListener('click', generateRandomVerse);
+// todaysVerseElement.addEventListener('click', handleClick);
