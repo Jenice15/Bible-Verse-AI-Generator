@@ -58,7 +58,18 @@ function searchVerse(event) {
         'Please try to be as precise as possible and choose only one answer, and disply only the verse in HTML format. Please do not display a joke or your reply,also do not display HTML text';
     let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
-    axios.get(apiUrl).then(verseGenerator);
+    axios
+        .get(apiUrl)
+        .then(verseGenerator)
+        .catch((error) => {
+            console.error('Error fetching verse:', error);
+            searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
+        })
+        .finally(() => {
+            searchBtn.disabled = false; // Enable search after completion
+            searchBtn.value = ''; // Reset input
+            searchBtn.blur(); // Remove focus
+        });
     // axios.get(apiUrl).then(handleClick);
 
     let searchParagraph = document.querySelector('#search-result-paragraph');
