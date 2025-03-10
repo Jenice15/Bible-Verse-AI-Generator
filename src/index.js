@@ -33,6 +33,11 @@ function verseGenerator(response) {
     // console.log(finalText);
     searchParagraph.innerHTML = `${response.data.answer}`;
 
+    if (searchParagraph.typewriter) {
+        searchParagraph.typewriter.stop();
+        searchParagraph.typewriter = null;
+    }
+
     new Typewriter(searchParagraph, {
         strings: response.data.answer,
         autoStart: true,
