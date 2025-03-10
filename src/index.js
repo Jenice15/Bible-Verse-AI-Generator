@@ -42,7 +42,9 @@ function verseGenerator(response) {
     // let searchBtn = document.querySelector('#user-instructions');
     //searchBtn.disabled = false;
     searchBtn.value = '';
-    searchBtn.focus();
+    setTimeout(() => {
+        searchBtn.focus();
+    }, 300);
     //searchBtn.focus();
 }
 
@@ -66,14 +68,6 @@ let inputWord = document.querySelector('#verse-generator-form');
 // let buttonElement = document.querySelector('#search-btn');
 inputWord.addEventListener('submit', searchVerse);
 
-document
-    .querySelector('#user-instructions')
-    .addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            searchVerse(event);
-        }
-    });
 // inputWord.addEventListener('submit', handleClick);
 
 let searchBtn = document.querySelector('#user-instructions');
