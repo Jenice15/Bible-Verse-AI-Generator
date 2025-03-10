@@ -33,11 +33,6 @@ function verseGenerator(response) {
     // console.log(finalText);
     searchParagraph.innerHTML = `${response.data.answer}`;
 
-    if (searchParagraph.typewriter) {
-        searchParagraph.typewriter.stop();
-        searchParagraph.typewriter = null;
-    }
-
     new Typewriter(searchParagraph, {
         strings: response.data.answer,
         autoStart: true,
@@ -70,6 +65,15 @@ function searchVerse(event) {
 let inputWord = document.querySelector('#verse-generator-form');
 // let buttonElement = document.querySelector('#search-btn');
 inputWord.addEventListener('submit', searchVerse);
+
+document
+    .querySelector('#user-instructions')
+    .addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            searchVerse(event);
+        }
+    });
 // inputWord.addEventListener('submit', handleClick);
 
 let searchBtn = document.querySelector('#user-instructions');
