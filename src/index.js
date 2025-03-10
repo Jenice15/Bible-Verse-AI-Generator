@@ -39,11 +39,11 @@ function verseGenerator(response) {
         delay: 20,
         cursor: '',
     });
-    let searchBtn = document.querySelector('#user-instructions');
-    searchBtn.disabled = false;
+    // let searchBtn = document.querySelector('#user-instructions');
+    //searchBtn.disabled = false;
     searchBtn.value = '';
     searchBtn.focus();
-    searchBtn.focus();
+    //searchBtn.focus();
 }
 
 function searchVerse(event) {
