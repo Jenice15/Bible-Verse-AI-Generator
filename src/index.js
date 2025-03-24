@@ -25,13 +25,14 @@ function generateRandomVerse(event) {
 
 function verseGenerator(response) {
     let searchParagraph = document.querySelector('#search-result-paragraph');
+    let searchInput = document.querySelector('#user-instructions');
     let searchBtn = document.querySelector('#user-instructions');
     // console.log(response.data.answer);
     // let finalText = response.data.answer;
     // let splicedText = finalText.splice(0, 6);
     // console.log(splicedText);
     // console.log(finalText);
-    searchParagraph.innerHTML = `${response.data.answer}`;
+    searchParagraph.innerHTML = response.data.answer;
 
     new Typewriter(searchParagraph, {
         strings: response.data.answer,
@@ -41,11 +42,14 @@ function verseGenerator(response) {
     });
     // let searchBtn = document.querySelector('#user-instructions');
     //searchBtn.disabled = false;
-    searchBtn.value = '';
+    searchBtn.value = ' ';
+    searchInput.disabled = false;
+    searchBtn.disabled = false;
+
     setTimeout(() => {
-        searchBtn.blur();
-    }, 300);
-    //searchBtn.focus();
+        searchInput.blur(); // Ensure keyboard closes properly
+        searchInput.focus(); // Refocus to allow new input
+    }, 500);
 }
 
 function searchVerse(event) {
