@@ -70,7 +70,8 @@ function searchVerse(event) {
     let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
     // Disable search button to prevent multiple clicks
-    if (searchBtn) searchBtn.disabled = true;
+    searchInput.disabled = true;
+    searchBtn.disabled = true;
 
     axios
         .get(apiUrl)
@@ -80,9 +81,11 @@ function searchVerse(event) {
             searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
         })
         .finally(() => {
-            if (searchBtn) searchBtn.disabled = false; // Re-enable search button
-            searchInput.value = ''; // Clear input field
-            searchInput.blur(); // Remove focus to prevent keyboard freeze on mobile
+            // Ensure input is enabled again
+            searchInput.disabled = false;
+            searchBtn.disabled = false;
+            searchInput.value = ''; // Reset input
+            searchInput.blur(); // Ensure the keyboard closes
         });
 }
 // axios.get(apiUrl).then(handleClick);
