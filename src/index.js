@@ -90,6 +90,14 @@ function searchVerse(event) {
             searchBtn.disabled = false;
             searchInput.value = ''; // Reset input
             searchInput.blur(); // Ensure the keyboard closes
+
+            // Remove and re-add event listener to refresh it
+            let form = document.querySelector('#verse-generator-form');
+            form.removeEventListener('submit', searchVerse);
+            setTimeout(() => {
+                form.addEventListener('submit', searchVerse);
+                searchInput.focus(); // Refocus input
+            }, 300);
         });
 }
 // axios.get(apiUrl).then(handleClick);
