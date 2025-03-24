@@ -42,13 +42,22 @@ function verseGenerator(response) {
     // });
     // let searchBtn = document.querySelector('#user-instructions');
     //searchBtn.disabled = false;
-    searchBtn.value = ' ';
-    searchInput.disabled = false;
-    searchBtn.disabled = false;
+    //last update      searchInput.blur();
+    //     searchBtn.value = ' ';
+    //     searchInput.disabled = false;
+    //     searchBtn.disabled = false;
 
+    //     setTimeout(() => {
+    //         searchInput.blur(); // Ensure keyboard closes properly
+    //         searchInput.focus(); // Refocus to allow new input
+    //     }, 500);
+    // }
+    searchInput.blur();
     setTimeout(() => {
-        searchInput.blur(); // Ensure keyboard closes properly
-        searchInput.focus(); // Refocus to allow new input
+        searchInput.disabled = false;
+        searchBtn.disabled = false;
+        searchInput.value = '';
+        searchInput.focus(); // Refocus AFTER a slight delay
     }, 500);
 }
 
