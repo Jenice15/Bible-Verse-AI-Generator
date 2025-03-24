@@ -86,29 +86,52 @@ async function searchVerse(event) {
     searchInput.disabled = true;
     searchBtn.disabled = true;
 
-    axios
-        .get(apiUrl)
-        .then(verseGenerator)
-        .catch((error) => {
-            console.error('Error fetching verse:', error);
-            searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
-        })
-        .finally(() => {
-            // Ensure input is enabled again
-            searchInput.disabled = false;
-            searchBtn.disabled = false;
-            searchInput.value = ''; // Reset input
-            searchInput.blur(); // Ensure the keyboard closes
+    try {
+        const response = await axios.get(apiUrl); // Await the response
+        verseGenerator(response); // Handle the response in verseGenerator
+    } catch (error) {
+        console.error('Error fetching verse:', error);
+        searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
+    } finally {
+        // Ensure input is enabled again
+        searchInput.disabled = false;
+        searchBtn.disabled = false;
+        searchInput.value = ''; // Reset input
+        searchInput.blur(); // Close keyboard on mobile
 
-            // Remove and re-add event listener to refresh it
-            let form = document.querySelector('#verse-generator-form');
-            form.removeEventListener('submit', searchVerse);
-            setTimeout(() => {
-                form.addEventListener('submit', searchVerse);
-                searchInput.focus(); // Refocus input
-            }, 300);
-        });
+        // Re-add event listener to prevent issues with the async call
+        let form = document.querySelector('#verse-generator-form');
+        form.removeEventListener('submit', searchVerse);
+        setTimeout(() => {
+            form.addEventListener('submit', searchVerse);
+            searchInput.focus(); // Refocus input
+        }, 300);
+    }
 }
+
+//Adding async fun to fix the error     axios
+//         .get(apiUrl)
+//         .then(verseGenerator)
+//         .catch((error) => {
+//             console.error('Error fetching verse:', error);
+//             searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
+//         })
+//         .finally(() => {
+//             // Ensure input is enabled again
+//             searchInput.disabled = false;
+//             searchBtn.disabled = false;
+//             searchInput.value = ''; // Reset input
+//             searchInput.blur(); // Ensure the keyboard closes
+
+//             // Remove and re-add event listener to refresh it
+//             let form = document.querySelector('#verse-generator-form');
+//             form.removeEventListener('submit', searchVerse);
+//             setTimeout(() => {
+//                 form.addEventListener('submit', searchVerse);
+//                 searchInput.focus(); // Refocus input
+//             }, 300);
+//         });
+// }
 // axios.get(apiUrl).then(handleClick);
 
 let inputWord = document.querySelector('#verse-generator-form');
