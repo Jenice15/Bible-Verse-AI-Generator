@@ -26,7 +26,7 @@ function generateRandomVerse(event) {
 function verseGenerator(response) {
     let searchParagraph = document.querySelector('#search-result-paragraph');
     let searchInput = document.querySelector('#user-instructions');
-    let searchBtn = document.querySelector('#user-instructions');
+    let searchBtn = document.querySelector('#search-btn');
     // console.log(response.data.answer);
     // let finalText = response.data.answer;
     // let splicedText = finalText.splice(0, 6);
@@ -61,7 +61,7 @@ function verseGenerator(response) {
     }, 500);
 }
 
-function searchVerse(event) {
+async function searchVerse(event) {
     event.preventDefault();
     console.log('Searching for a verse...');
 
