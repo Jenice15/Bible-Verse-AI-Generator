@@ -34,12 +34,12 @@ function verseGenerator(response) {
     // console.log(finalText);
     searchParagraph.innerHTML = response.data.answer;
 
-    new Typewriter(searchParagraph, {
-        strings: response.data.answer,
-        autoStart: true,
-        delay: 20,
-        cursor: '',
-    });
+    // new Typewriter(searchParagraph, {
+    //     strings: response.data.answer,
+    //     autoStart: true,
+    //     delay: 20,
+    //     cursor: '',
+    // });
     // let searchBtn = document.querySelector('#user-instructions');
     //searchBtn.disabled = false;
     searchBtn.value = ' ';
