@@ -99,7 +99,8 @@ async function searchVerse(event) {
         searchInput.value = ''; // Reset input
         searchInput.blur(); // Close keyboard on mobile
         // history.go(0.30);
-        windows.location.reload();
+        //windows.location.reload();
+        window.location.href = window.location.href;
 
         // Re-add event listener to prevent issues with the async call
         let form = document.querySelector('#verse-generator-form');
