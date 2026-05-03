@@ -60,12 +60,10 @@ function verseGenerator(response) {
         searchInput.focus(); // Refocus AFTER a slight delay
     }, 500);
 }
-
 async function searchVerse(event) {
     event.preventDefault();
-    console.log('Searching for a verse...');
-
-    let searchBtn = document.querySelector('#search-btn'); // Assuming you have a button with this ID
+    
+    let searchBtn = document.querySelector('#search-btn');
     let searchInput = document.querySelector('#user-instructions');
     let searchParagraph = document.querySelector('#search-result-paragraph');
 
@@ -75,42 +73,85 @@ async function searchVerse(event) {
         return;
     }
 
-    let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
-    let prompt = `You are the best AI, and I believe you can help people to turn to God, give me one bible verse with the word ${userInstructions}`;
-    let context =
-        'Please try to be as precise as possible and choose only one answer, and display only the verse.';
-
-    let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
-
-    // Disable search button to prevent multiple clicks
+    // 1. UI Feedback: Disable elements & show loading state
     searchInput.disabled = true;
     searchBtn.disabled = true;
+    searchParagraph.innerHTML = `<span class="blink">Generating verse about ${userInstructions}...</span>`;
+
+    let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
+    let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
+    let context = 'Please be precise... display only the verse.';
+    let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
     try {
-        const response = await axios.get(apiUrl); // Await the response
-        verseGenerator(response); // Handle the response in verseGenerator
+        const response = await axios.get(apiUrl);
+        searchParagraph.innerHTML = response.data.answer;
     } catch (error) {
-        console.error('Error fetching verse:', error);
+        console.error('Error:', error);
         searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
     } finally {
-        // Ensure input is enabled again
+        // 2. IMPORTANT: Remove the window.location.href reload! 
+        // Just re-enable the UI elements.
         searchInput.disabled = false;
         searchBtn.disabled = false;
-        searchInput.value = ''; // Reset input
-        searchInput.blur(); // Close keyboard on mobile
-        // history.go(0.30);
-        //windows.location.reload();
-        window.location.href = window.location.href;
-
-        // Re-add event listener to prevent issues with the async call
-        let form = document.querySelector('#verse-generator-form');
-        form.removeEventListener('submit', searchVerse);
-        setTimeout(() => {
-            form.addEventListener('submit', searchVerse);
-            searchInput.focus(); // Refocus input
-        }, 300);
+        searchInput.value = ''; 
+        
+        // Mobile UX: Close keyboard but don't force a "jumpy" focus immediately
+        searchInput.blur(); 
     }
 }
+
+
+// async function searchVerse(event) {
+//     event.preventDefault();
+//     console.log('Searching for a verse...');
+
+//     let searchBtn = document.querySelector('#search-btn'); // Assuming you have a button with this ID
+//     let searchInput = document.querySelector('#user-instructions');
+//     let searchParagraph = document.querySelector('#search-result-paragraph');
+
+//     let userInstructions = searchInput.value.trim();
+//     if (!userInstructions) {
+//         searchParagraph.innerHTML = 'Please enter a keyword to search.';
+//         return;
+//     }
+
+//     let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
+//     let prompt = `You are the best AI, and I believe you can help people to turn to God, give me one bible verse with the word ${userInstructions}`;
+//     let context =
+//         'Please try to be as precise as possible and choose only one answer, and display only the verse.';
+
+//     let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+//     // Disable search button to prevent multiple clicks
+//     searchInput.disabled = true;
+//     searchBtn.disabled = true;
+
+//     try {
+//         const response = await axios.get(apiUrl); // Await the response
+//         verseGenerator(response); // Handle the response in verseGenerator
+//     } catch (error) {
+//         console.error('Error fetching verse:', error);
+//         searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
+//     } finally {
+//         // Ensure input is enabled again
+//         searchInput.disabled = false;
+//         searchBtn.disabled = false;
+//         searchInput.value = ''; // Reset input
+//         searchInput.blur(); // Close keyboard on mobile
+//         // history.go(0.30);
+//         //windows.location.reload();
+//         window.location.href = window.location.href;
+
+//         // Re-add event listener to prevent issues with the async call
+//         let form = document.querySelector('#verse-generator-form');
+//         form.removeEventListener('submit', searchVerse);
+//         setTimeout(() => {
+//             form.addEventListener('submit', searchVerse);
+//             searchInput.focus(); // Refocus input
+//         }, 300);
+//     }
+// }
 
 //Adding async fun to fix the error     axios
 //         .get(apiUrl)
