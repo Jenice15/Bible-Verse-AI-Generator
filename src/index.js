@@ -62,40 +62,50 @@ function verseGenerator(response) {
     }, 500);
 }
 async function searchVerse(event) {
-    event.preventDefault(); // STOPS the reload/freeze
+    event.preventDefault(); // Prevents the reload that crashes mobile apps
     
     let searchBtn = document.querySelector('#search-btn');
     let searchInput = document.querySelector('#user-instructions');
     let searchParagraph = document.querySelector('#search-result-paragraph');
 
-    // 1. Lock the UI
+    // 1. CLEAR & LOCK
+    let userWord = searchInput.value.trim(); // .trim() removes accidental spaces
+    if (!userWord) {
+        searchParagraph.innerHTML = 'Please enter a keyword.';
+        return;
+    }
+
     searchInput.disabled = true;
     searchBtn.disabled = true;
-    searchParagraph.innerHTML = "Generating your verse...";
+    searchParagraph.innerHTML = "Thinking...";
 
     let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
-    let userInstructions = searchInput.value;
     
-    // We use encodeURIComponent to make sure the URL doesn't break on mobile
-    let prompt = `Give me one bible verse with the word ${encodeURIComponent(userInstructions)}`;
-    let context = 'Please be precise and display only the verse.';
-    let apiUrl = `https://shecodes.io{prompt}&context=${context}&key=${apiKey}`;
+    // 2. THE FIX: Clean the prompt for the API
+    let cleanPrompt = `give me one bible verse with the word ${encodeURIComponent(userWord)}`;
+    let context = 'display only the verse';
+    let apiUrl = `https://shecodes.io{cleanPrompt}&context=${context}&key=${apiKey}`;
 
     try {
-        // Using Axios since you said it worked before
         const response = await axios.get(apiUrl);
-        searchParagraph.innerHTML = response.data.answer;
+        // Only update if there is an actual answer
+        if (response.data && response.data.answer) {
+            searchParagraph.innerHTML = response.data.answer;
+        } else {
+            throw new Error("No data received");
+        }
     } catch (error) {
         console.error('API Error:', error);
-        searchParagraph.innerHTML = "Sorry, couldn't find a verse. Try another word!";
+        searchParagraph.innerHTML = "Sorry, I couldn't find a verse for that word. Try again!";
     } finally {
-        // 2. UNLOCK the UI (This is what fixed the freeze!)
+        // 3. UNLOCK - Ensuring the bar never stays frozen
         searchInput.disabled = false;
         searchBtn.disabled = false;
         searchInput.value = ''; 
-        searchInput.blur(); // Closes the mobile keyboard
+        searchInput.blur(); // Closes the mobile keyboard automatically
     }
 }
+
 
 
 
