@@ -62,7 +62,7 @@ function verseGenerator(response) {
 }
 async function searchVerse(event) {
     event.preventDefault();
-    
+
     let searchBtn = document.querySelector('#search-btn');
     let searchInput = document.querySelector('#user-instructions');
     let searchParagraph = document.querySelector('#search-result-paragraph');
@@ -73,15 +73,15 @@ async function searchVerse(event) {
         return;
     }
 
-    // 1. UI Feedback: Disable elements & show loading state
-    searchInput.disabled = true;
-    searchBtn.disabled = true;
-    searchParagraph.innerHTML = `<span class="blink">Generating verse about ${userInstructions}...</span>`;
-
     let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
     let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
     let context = 'Please be precise... display only the verse.';
-    let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+    let apiUrl = `https://shecodes.io{prompt}&context=${context}&key=${apiKey}`;
+
+    // 1. Disable to prevent double-clicks
+    searchInput.disabled = true;
+    searchBtn.disabled = true;
+    searchParagraph.innerHTML = "Finding a verse for you...";
 
     try {
         const response = await axios.get(apiUrl);
@@ -90,16 +90,16 @@ async function searchVerse(event) {
         console.error('Error:', error);
         searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
     } finally {
-        // 2. IMPORTANT: Remove the window.location.href reload! 
-        // Just re-enable the UI elements.
+        // 2. Re-enable everything WITHOUT reloading the page
         searchInput.disabled = false;
         searchBtn.disabled = false;
         searchInput.value = ''; 
         
-        // Mobile UX: Close keyboard but don't force a "jumpy" focus immediately
-        searchInput.blur(); 
+        // 3. Mobile keyboard management
+        searchInput.blur(); // Closes the keyboard
     }
 }
+
 
 
 // async function searchVerse(event) {
