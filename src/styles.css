@@ -4,9 +4,13 @@
     --tertiary-color: aliceblue;
 }
 /* This is the magic number to stop iOS auto-zoom */
-.main-content-input, 
+/* This "tricks" iOS into thinking the input is big enough (16px) 
+   so it won't zoom, while keeping it looking small (13px-14px) */
 #user-instructions {
-    font-size: 16px !important;
+    font-size: 16px !important; /* Satisfies the 16px rule */
+    transform: scale(0.875); /* Shrinks it back down visually (16 * 0.875 = 14) */
+    transform-origin: left center;
+    width: 115%; /* Adjust width to compensate for the scale shrink */
 }
 
 /* Optional: Prevent touch-delay on buttons for a snappier feel */
