@@ -177,7 +177,7 @@ a {
         border-radius: 25px !important;
     }
     .container-main {
-        width: 1500px !important;
+        min-height: 100vh !important;
     }
     main {
         height: 1600px;
