@@ -3,6 +3,9 @@
     --secondary-color: #3498c2;
     --tertiary-color: aliceblue;
 }
+#user-instructions {
+    font-size: 16px; /* Prevents iOS auto-zoom on focus */
+}
 
 body {
     background-color: #282828;
