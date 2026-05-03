@@ -3,9 +3,17 @@
     --secondary-color: #3498c2;
     --tertiary-color: aliceblue;
 }
+/* This is the magic number to stop iOS auto-zoom */
+.main-content-input, 
 #user-instructions {
-    font-size: 16px; /* Prevents iOS auto-zoom on focus */
+    font-size: 16px !important;
 }
+
+/* Optional: Prevent touch-delay on buttons for a snappier feel */
+button, .search-btn {
+    touch-action: manipulation;
+}
+
 
 body {
     background-color: #282828;
