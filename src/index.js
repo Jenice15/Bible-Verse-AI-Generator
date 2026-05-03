@@ -62,46 +62,39 @@ function verseGenerator(response) {
     }, 500);
 }
 async function searchVerse(event) {
-    event.preventDefault();
-
+    event.preventDefault(); // Prevents the page from refreshing on submit
+    
     let searchBtn = document.querySelector('#search-btn');
     let searchInput = document.querySelector('#user-instructions');
     let searchParagraph = document.querySelector('#search-result-paragraph');
 
-    let userInstructions = searchInput.value.trim();
-    if (!userInstructions) {
-        searchParagraph.innerHTML = 'Please enter a keyword to search.';
-        return;
-    }
-
-    let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
-    let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
-    let context = 'Please be precise... display only the verse.';
-   // This uses encodeURIComponent to make sure your text doesn't "break" the URL
- let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
-
-
-    // 1. Disable to prevent double-clicks
+    // 1. Disable inputs so the user can't click twice while the AI "thinks"
     searchInput.disabled = true;
     searchBtn.disabled = true;
-    searchParagraph.innerHTML = "Finding a verse for you...";
+    searchParagraph.innerHTML = "Generating your verse...";
+
+    // 2. Use your WORKING API URL here
+    let userInstructions = searchInput.value;
+    let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
+    let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
+    let context = 'Please be precise and display only the verse.';
+    let apiUrl = `https://shecodes.io{prompt}&context=${context}&key=${apiKey}`;
 
     try {
         const response = await axios.get(apiUrl);
         searchParagraph.innerHTML = response.data.answer;
     } catch (error) {
-        console.error('Error:', error);
-        searchParagraph.innerHTML = 'Failed to fetch verse. Try again.';
+        console.error('Error fetching verse:', error);
+        searchParagraph.innerHTML = 'Failed to fetch verse. Please try again.';
     } finally {
-        // 2. Re-enable everything WITHOUT reloading the page
+        // 3. IMPORTANT: Re-enable the UI WITHOUT refreshing the page
         searchInput.disabled = false;
         searchBtn.disabled = false;
-        searchInput.value = ''; 
-        
-        // 3. Mobile keyboard management
-        searchInput.blur(); // Closes the keyboard
+        searchInput.value = ''; // Clear input for the next search
+        searchInput.blur(); // Closes the mobile keyboard
     }
 }
+
 
 
 
