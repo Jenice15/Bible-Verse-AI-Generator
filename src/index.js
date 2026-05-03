@@ -10,8 +10,8 @@ function generateRandomVerse(event) {
     let prompt = `You are the best AI, and I believe you can help people to turn to God give me one bible verse.Please do not include the following text: "html". Here is an example of a verse "Hebrews 11:1 - Now faith is the substance of things hoped for, the evidence of things not seen".`;
     let context =
         'Please try to be as precise as possible and choose only one answer. And please do not display a joke or your reply!';
-   // This uses encodeURIComponent to make sure your text doesn't "break" the URL
-let apiUrl = `https://shecodes.io{encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+    axios.get(apiUrl).then(getTodaysVerse);
 
     console.log(apiUrl);
 }
@@ -77,7 +77,9 @@ async function searchVerse(event) {
     let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
     let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
     let context = 'Please be precise... display only the verse.';
-    let apiUrl = `https://shecodes.io{prompt}&context=${context}&key=${apiKey}`;
+   // This uses encodeURIComponent to make sure your text doesn't "break" the URL
+let apiUrl = `https://shecodes.io{encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+
 
     // 1. Disable to prevent double-clicks
     searchInput.disabled = true;
