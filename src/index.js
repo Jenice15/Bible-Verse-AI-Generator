@@ -62,38 +62,41 @@ function verseGenerator(response) {
     }, 500);
 }
 async function searchVerse(event) {
-    event.preventDefault(); // Prevents the page from refreshing on submit
+    event.preventDefault(); // STOPS the reload/freeze
     
     let searchBtn = document.querySelector('#search-btn');
     let searchInput = document.querySelector('#user-instructions');
     let searchParagraph = document.querySelector('#search-result-paragraph');
 
-    // 1. Disable inputs so the user can't click twice while the AI "thinks"
+    // 1. Lock the UI
     searchInput.disabled = true;
     searchBtn.disabled = true;
     searchParagraph.innerHTML = "Generating your verse...";
 
-    // 2. Use your WORKING API URL here
-    let userInstructions = searchInput.value;
     let apiKey = 'fa90t5bf5523344e459f280fabbb9o83';
-    let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
+    let userInstructions = searchInput.value;
+    
+    // We use encodeURIComponent to make sure the URL doesn't break on mobile
+    let prompt = `Give me one bible verse with the word ${encodeURIComponent(userInstructions)}`;
     let context = 'Please be precise and display only the verse.';
     let apiUrl = `https://shecodes.io{prompt}&context=${context}&key=${apiKey}`;
 
     try {
+        // Using Axios since you said it worked before
         const response = await axios.get(apiUrl);
         searchParagraph.innerHTML = response.data.answer;
     } catch (error) {
-        console.error('Error fetching verse:', error);
-        searchParagraph.innerHTML = 'Failed to fetch verse. Please try again.';
+        console.error('API Error:', error);
+        searchParagraph.innerHTML = "Sorry, couldn't find a verse. Try another word!";
     } finally {
-        // 3. IMPORTANT: Re-enable the UI WITHOUT refreshing the page
+        // 2. UNLOCK the UI (This is what fixed the freeze!)
         searchInput.disabled = false;
         searchBtn.disabled = false;
-        searchInput.value = ''; // Clear input for the next search
+        searchInput.value = ''; 
         searchInput.blur(); // Closes the mobile keyboard
     }
 }
+
 
 
 
