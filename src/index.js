@@ -78,7 +78,7 @@ async function searchVerse(event) {
     let prompt = `You are the best AI... give me one bible verse with the word ${userInstructions}`;
     let context = 'Please be precise... display only the verse.';
    // This uses encodeURIComponent to make sure your text doesn't "break" the URL
-let apiUrl = `https://shecodes.io{encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+ let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
 
     // 1. Disable to prevent double-clicks
