@@ -176,9 +176,9 @@ a {
 
         border-radius: 25px !important;
     }
-    /* .container-main {
-        width: 100px !important;
-    } */
+    .container-main {
+        width: 1000px !important;
+    }
     main {
         height: 1600px;
     }
