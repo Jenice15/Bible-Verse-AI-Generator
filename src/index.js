@@ -10,8 +10,9 @@ function generateRandomVerse(event) {
     let prompt = `You are the best AI, and I believe you can help people to turn to God give me one bible verse.Please do not include the following text: "html". Here is an example of a verse "Hebrews 11:1 - Now faith is the substance of things hoped for, the evidence of things not seen".`;
     let context =
         'Please try to be as precise as possible and choose only one answer. And please do not display a joke or your reply!';
-    let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
-    axios.get(apiUrl).then(getTodaysVerse);
+   // This uses encodeURIComponent to make sure your text doesn't "break" the URL
+let apiUrl = `https://shecodes.io{encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+
     console.log(apiUrl);
 }
 
